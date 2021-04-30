@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from 'express';
+import {NextFunction, Request, Response} from 'express';
 
-import { Auth as AuthImport, firebase, firebaseAuth } from './deps';
-import { Settings } from './Types/Settings';
+import {Admin, Auth as AuthImport} from './deps';
+import {Settings} from './Types/Settings';
 
 export type Auth = AuthImport;
 export * from './Types';
@@ -14,9 +14,9 @@ declare global {
   }
 }
 
-export default (settings: Settings) => (req: Request, res: Response, next: NextFunction) => {
-  firebase.initializeApp(settings);
-  req.auth = firebaseAuth;
+export default (settings?: Settings) => (req: Request, res: Response, next: NextFunction) => {
+  Admin.initializeApp(settings);
+  req.auth = Admin.auth();
 
   next();
 };

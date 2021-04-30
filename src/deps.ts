@@ -1,5 +1,4 @@
-import Firebase from 'firebase/app';
+import * as admin from 'firebase-admin';
 
-export const firebase = Firebase;
-export type Auth = Firebase.auth.Auth;
-export const firebaseAuth = Firebase.auth();
+export type Auth = admin.auth.Auth;
+export const Admin = admin;
