@@ -1,4 +1,6 @@
-export type Settings = {
+import {AppOptions} from 'firebase-admin';
+
+type AuthSettings = {
   apiKey: string;
   authDomain: string;
   databaseURL: string;
@@ -7,3 +9,5 @@ export type Settings = {
   messagingSenderId: string;
   appId: string;
 };
+
+export type Settings = AuthSettings & AppOptions;
