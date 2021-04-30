@@ -15,11 +15,14 @@ declare global {
   }
 }
 
-export default (settings: Settings) => (req: Request, res: Response, next: NextFunction) => {
+export default (settings: Settings) => {
   const firebase = Admin.initializeApp(settings, 'firebase');
   const firebaseAdmin = AuthAdmin.initializeApp(settings, 'firebaseAdmin');
-  req.auth = firebase.auth();
-  req.authAdmin = firebaseAdmin.auth();
 
-  next();
+  return (req: Request, res: Response, next: NextFunction) => {
+    req.auth = firebase.auth();
+    req.authAdmin = firebaseAdmin.auth();
+
+    next();
+  };
 };
