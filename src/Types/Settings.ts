@@ -1,4 +1,4 @@
-import {AppOptions} from 'firebase-admin';
+import { AppOptions } from 'firebase-admin';
 
 type AuthSettings = {
   apiKey: string;
