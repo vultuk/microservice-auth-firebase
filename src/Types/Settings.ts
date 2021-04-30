@@ -1,1 +1,9 @@
-export type { AppOptions as Settings } from 'firebase-admin';
+export type Settings = {
+  apiKey: string;
+  authDomain: string;
+  databaseURL: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+};
