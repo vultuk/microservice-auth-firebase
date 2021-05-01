@@ -18,7 +18,17 @@ declare global {
 
 export default (settings: Settings) => {
   const firebase = Admin.initializeApp(settings, 'firebase');
-  const firebaseAdmin = AuthAdmin.initializeApp(settings, 'firebaseAdmin');
+  let firebaseAdmin: any;
+  if (settings.credential) {
+    firebaseAdmin = AuthAdmin.initializeApp(
+      {
+        credential: AuthAdmin.credential.cert(((settings.credential || '') as unknown) as string),
+      },
+      'firebaseAdmin',
+    );
+  } else {
+    firebaseAdmin = AuthAdmin.initializeApp(settings, 'firebaseAdmin');
+  }
 
   return (req: Request, res: Response, next: NextFunction) => {
     req.auth = firebase.auth();
