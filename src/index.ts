@@ -22,6 +22,7 @@ export default (settings: Settings) => {
   if (settings.credential) {
     firebaseAdmin = AuthAdmin.initializeApp(
       {
+        ...settings,
         credential: AuthAdmin.credential.cert(((settings.credential || '') as unknown) as string),
       },
       'firebaseAdmin',
