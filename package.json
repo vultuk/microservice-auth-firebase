@@ -33,6 +33,6 @@
   "dependencies": {
     "@types/express": "^4.17.11",
     "firebase": "^8.4.3",
-    "firebase-admin": "^9.7.0"
+    "firebase-admin": "^11.4.1"
   }
 }
